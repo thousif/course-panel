@@ -17,14 +17,6 @@ class Sidebar extends Component {
         <img src={logo} />
       </div>
       <Menu mode="inline" defaultSelectedKeys={['1']}>
-        <Menu.Item key="1">
-          <Icon type="user" />
-          <span><Link to={"/promocode"}>Promocode</Link></span>
-        </Menu.Item>
-        <Menu.Item key="3">
-          <Icon type="notification" />
-          <span><Link to={"/campaign"}>Campaign</Link></span>
-        </Menu.Item>
         <Menu.Item key="2">
           <Icon type="logout" />
           <span onClick={this.props.logout}>Logout</span>

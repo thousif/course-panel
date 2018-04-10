@@ -47,6 +47,10 @@ class App extends Component {
     console.log(nextProps);
   }
 
+  componentWillMount(){
+    
+  }
+
   render() {
     return (
         <div >
