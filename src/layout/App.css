@@ -105,3 +105,78 @@
 .promos{
   margin-top: 20px;
 }
+
+.c-cards { 
+}
+
+.c-cards h4 {
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c-cards h4 span {
+  font-weight: normal;
+}
+
+.ant-card-head-title{
+  width: 75% !important;
+}
+
+.c-cards .ant-card-body{
+  padding: 0; 
+}
+
+.c-cards .launch-btn{
+  width: 100%;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  height: 42px;
+}
+
+.custom-image {
+  margin-bottom: -5px;
+  display: block;
+  height: 250px;
+  cursor: pointer;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.custom-card {  
+  padding: 10px;
+}
+
+.campaign-container {
+
+}
+
+.campaign-container .header{
+  text-align: left;
+  padding-bottom: 30px;
+}
+
+.campaign-container .content{
+  padding: 30px 0;
+}
+
+.campaign-container .content hr {
+  width: 85%;
+}
+
+.campaign-container .content .factor {
+  margin-bottom: 20px;
+}
+
+.campaign-container .content .factor h2{
+  font-size: 18px;
+  font-weight: normal;
+  color: #777474;
+}
+
+.campaign-container .header .badge{
+  float: right;
+}

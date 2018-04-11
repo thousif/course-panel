@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from "react-redux";
 import store from "./store";
 import App from './layout/App';
+import Home from './scenes/home';
+import Course from './scenes/course';
 import Login from './scenes/login/index';
 import Register from './scenes/register';
 import registerServiceWorker from './registerServiceWorker';
@@ -18,6 +20,8 @@ ReactDOM.render(
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/" component={App}>
+          <IndexRoute component={Home}></IndexRoute>
+          <Route path="/course/:cid" component={Course}></Route>
         </Route>
       </Router>
     </Provider>
