@@ -15,7 +15,7 @@ export default function reducer(state={
         console.log(action.payload)
         return {
           ...state,
-          course : action.payload
+          course : action.payload.data
         }
       }
       case OPEN_COURSE_REJECTED : {

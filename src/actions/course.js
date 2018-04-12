@@ -27,6 +27,42 @@ export function fetchCourse(id) {
   }
 }
 
+export function editChapter(chapter) {
+  console.log(chapter);
+  return function(dispatch) {
+    axios.post(constants.API_ENDPOINT+'/api/crs_chapters/edit',chapter).then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+}
+
+export function addChapter(chapter) {
+  console.log(chapter);
+  return function(dispatch) {
+    axios.post(constants.API_ENDPOINT+'/api/crs_chapters/add',chapter).then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+}
+
+export function deleteChapter(chapter) {
+  console.log(chapter);
+  return function(dispatch) {
+    axios.post(constants.API_ENDPOINT+'/api/crs_chapters/delete',chapter).then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+}
+
 export function logout(){
   removeCookies();
   return function(dispatch){
