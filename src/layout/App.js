@@ -21,9 +21,9 @@ class App extends Component {
   constructor(props){
     super(props);
     console.log(this.props);
-    if(cookies.get("course_aid") && cookies.get("course_at")){}else{
-      this.props.router.push("/login");
-    }
+    // if(cookies.get("course_aid") && cookies.get("course_at")){}else{
+    //   this.props.router.push("/login");
+    // }
   }
 
   state = {
@@ -41,7 +41,7 @@ class App extends Component {
   }
 
   componentWillReceiveProps(nextProps){
-    if(nextProps.user.logout){
+    if(nextProps.user.logout !== this.props.user.logout){
       this.props.router.push("/login");
     }
     console.log(nextProps);

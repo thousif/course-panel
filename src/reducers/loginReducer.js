@@ -15,12 +15,13 @@ export default function reducer(state={
     },
     fetching: false,
     fetched: false,
+    logout : false,
     error: null,
   }, action) {
     switch (action.type) {
       case "LOGIN_USER": {
         return {...state,
-            user : { ...state.user, logging : true, verifying : false }, 
+            user : { ...state.user, logging : true, verifying : false, logout : false }, 
             fetching: true
           }
       }
@@ -32,7 +33,7 @@ export default function reducer(state={
           ...state,
           fetching: false,
           fetched: true,
-          user: { ...state.user, logging : true, verifying : true,logged : true, token : action.payload.token}, 
+          user: { ...state.user,logout : false, logging : true, verifying : true,logged : true, token : action.payload.token}, 
         }
       }
       case "REGISTER_USER": {

@@ -28,7 +28,8 @@ const confirm = Modal.confirm;
 @connect((store) => {
   console.log(store);
   return {
-    course : store.course.course
+    course : store.course.course,
+    status : store.course.status
   };
 })
 
@@ -48,6 +49,14 @@ class Course extends Component {
   componentWillMount(){
     console.log("dispatch");
     this.props.dispatch(fetchCourse(this.props.params.cid));
+  }
+
+  componentWillReceiveProps(nextProps){
+    if(nextProps.status !== this.props.status){
+      if(nextProps.status.update){
+        this.props.dispatch(fetchCourse(this.props.params.cid));
+      }
+    }
   }
 
   openEditModal = (chapter) => {
@@ -115,6 +124,12 @@ class Course extends Component {
     })
   }
 
+  openChapter = (id) => {
+    if(!id) return
+    console.log("opening chapter with id :", id);
+    this.props.router.push('/chapter/'+this.props.params.cid+'/'+id);
+  }
+
   deleteChapter = (chapter) => {
     let self = this;
     confirm({
@@ -163,7 +178,7 @@ class Course extends Component {
             <Row>
             {course.curriculum && course.curriculum.length > 0 && course.curriculum.map(chapter => 
               <Col key={chapter._id} style={{ marginBottom : 20 }} span={24}>
-                <Card title={chapter.nm} extra={
+                <Card title={<a onClick={()=>{this.openChapter(chapter._id)}} >{chapter.nm}</a>} extra={
                     <div>
                       <a onClick={() => {this.openEditModal(chapter)}}>Edit</a>
                       <a onClick={() => {this.deleteChapter(chapter)}} style={{marginLeft : 4}}>Delete</a>

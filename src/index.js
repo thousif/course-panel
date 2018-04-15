@@ -5,6 +5,7 @@ import store from "./store";
 import App from './layout/App';
 import Home from './scenes/home';
 import Course from './scenes/course';
+import Chapter from './scenes/chapter';
 import Login from './scenes/login/index';
 import Register from './scenes/register';
 import registerServiceWorker from './registerServiceWorker';
@@ -22,6 +23,7 @@ ReactDOM.render(
         <Route path="/" component={App}>
           <IndexRoute component={Home}></IndexRoute>
           <Route path="/course/:cid" component={Course}></Route>
+          <Route path="/chapter/:cid/:ch_id" component={Chapter}></Route>
         </Route>
       </Router>
     </Provider>

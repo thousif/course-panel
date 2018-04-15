@@ -1,9 +1,21 @@
 import { OPEN_COURSE,
          OPEN_COURSE_FULFILLED,
-         OPEN_COURSE_REJECTED
+         OPEN_COURSE_REJECTED,
+         ADD_CHAPTER,
+         ADD_CHAPTER_FULFILLED,
+         ADD_CHAPTER_REJECTED,
+         EDIT_CHAPTER,
+         EDIT_CHAPTER_FULFILLED,
+         EDIT_CHAPTER_REJECTED,
+         DELETE_CHAPTER,
+         DELETE_CHAPTER_FULFILLED,
+         DELETE_CHAPTER_REJECTED,
        } from '../actions/course'
 export default function reducer(state={
-    course : {}
+    course : {},
+    status : {
+      update : false
+    },
   }, action) {
     switch (action.type) {
       case OPEN_COURSE : {
@@ -26,6 +38,30 @@ export default function reducer(state={
         console.log("logging out");
         return {
           ...state
+        }
+      }
+      case ADD_CHAPTER_FULFILLED : {
+        return {
+          ...state,
+          status : {
+            update : true
+          }
+        }
+      }
+      case EDIT_CHAPTER_FULFILLED : {
+        return {
+          ...state,
+          status : {
+            update : true
+          }
+        } 
+      }
+      case DELETE_CHAPTER_FULFILLED : {
+        return {
+          ...state,
+          status : {
+            update : true
+          }
         }
       }
     }
