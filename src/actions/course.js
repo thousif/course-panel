@@ -28,7 +28,13 @@ function removeCookies(){
 export function fetchCourse(id) {
   return function(dispatch) {
     dispatch({type : OPEN_COURSE});
-    axios.get(constants.API_ENDPOINT+'/api/course/'+id).then((response) => {
+    let config = {
+      url : constants.API_ENDPOINT+'/api/course/'+id,
+      headers : {
+        'x-access-token' : cookies.get("course_aid")
+      }
+    }
+    axios.get(config).then((response) => {
       console.log(response);
       dispatch({type: OPEN_COURSE_FULFILLED, payload: response.data})
     })

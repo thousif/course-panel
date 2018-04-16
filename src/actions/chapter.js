@@ -34,6 +34,10 @@ export function fetchChapter(cid,ch_id) {
     dispatch({type : OPEN_CHAPTER});
     axios.post(constants.API_ENDPOINT+'/api/crs_chapters/open',{
       cid,ch_id
+    },{
+        headers : {
+          'x-access-token' : cookies.get("course_at")
+        }
     }).then((response) => {
       console.log(response);
       dispatch({type: OPEN_CHAPTER_FULFILLED, payload: response.data})

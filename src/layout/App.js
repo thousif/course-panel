@@ -21,9 +21,9 @@ class App extends Component {
   constructor(props){
     super(props);
     console.log(this.props);
-    // if(cookies.get("course_aid") && cookies.get("course_at")){}else{
-    //   this.props.router.push("/login");
-    // }
+    if(cookies.get("course_aid") && cookies.get("course_at")){}else{
+      this.props.router.push("/login");
+    }
   }
 
   state = {

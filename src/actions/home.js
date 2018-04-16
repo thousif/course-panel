@@ -17,6 +17,9 @@ export function fetchCourses() {
   return function(dispatch) {
     dispatch({type : FETCH_COURSES});
     axios.get(constants.API_ENDPOINT+'/api/course/list',{
+        headers : {
+          'x-access-token' : cookies.get("course_at")
+        }
       }).then((response) => {
         console.log(response);
         dispatch({type: FETCH_COURSES_FULFILLED, payload: response.data})
