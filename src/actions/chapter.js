@@ -44,6 +44,11 @@ export function fetchChapter(cid,ch_id) {
     })
     .catch((err) => {
       console.log(err);
+      if(err.response && err.response.status == 498){
+          removeCookies();
+          dispatch({type : "LOGOUT"})
+          return
+        }
       dispatch({type: OPEN_CHAPTER_REJECTED, payload: err})
     })
   }
@@ -58,6 +63,11 @@ export function fetchQuizzes(cid) {
     })
     .catch((err) => {
       console.log(err);
+      if(err.response && err.response.status == 498){
+          removeCookies();
+          dispatch({type : "LOGOUT"})
+          return
+        }
       dispatch({type: FETCH_QUIZZES_REJECTED, payload: err})
     })
   }
@@ -72,6 +82,11 @@ export function fetchLectures(cid) {
     })
     .catch((err) => {
       console.log(err);
+      if(err.response && err.response.status == 498){
+          removeCookies();
+          dispatch({type : "LOGOUT"})
+          return
+        }
       dispatch({type: FETCH_LECTURES_REJECTED, payload: err})
     })
   }
@@ -87,6 +102,11 @@ export function addTopic(topic) {
     })
     .catch((err) => {
       console.log(err);
+      if(err.response && err.response.status == 498){
+          removeCookies();
+          dispatch({type : "LOGOUT"})
+          return
+        }
       dispatch({type : ADD_TOPIC_REJECTED , payload : err });
     })
   }
@@ -102,6 +122,11 @@ export function updateCurriculum(data) {
     })
     .catch((err) => {
       console.log(err);
+      if(err.response && err.response.status == 498){
+          removeCookies();
+          dispatch({type : "LOGOUT"})
+          return
+        }
       dispatch({type : UPDATE_CURRICULUM_REJECTED, payload : err });
     })
   }

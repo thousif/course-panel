@@ -28,18 +28,17 @@ function removeCookies(){
 export function fetchCourse(id) {
   return function(dispatch) {
     dispatch({type : OPEN_COURSE});
-    let config = {
-      url : constants.API_ENDPOINT+'/api/course/'+id,
-      headers : {
-        'x-access-token' : cookies.get("course_aid")
-      }
-    }
-    axios.get(config).then((response) => {
+    axios.get(constants.API_ENDPOINT+'/api/course/'+id).then((response) => {
       console.log(response);
       dispatch({type: OPEN_COURSE_FULFILLED, payload: response.data})
     })
     .catch((err) => {
       console.log(err);
+      if(err.response && err.response.status == 498){
+        removeCookies();
+        dispatch({type : "LOGOUT"})
+        return
+      }
       dispatch({type: OPEN_COURSE_REJECTED, payload: err})
     })
   }
@@ -55,6 +54,11 @@ export function editChapter(chapter) {
     })
     .catch((err) => {
       console.log(err);
+      if(err.response && err.response.status == 498){
+          removeCookies();
+          dispatch({type : "LOGOUT"})
+          return
+        }
       dispatch({type : EDIT_CHAPTER_REJECTED, payload : err });
     })
   }
@@ -70,6 +74,11 @@ export function addChapter(chapter) {
     })
     .catch((err) => {
       console.log(err);
+      if(err.response && err.response.status == 498){
+          removeCookies();
+          dispatch({type : "LOGOUT"})
+          return
+        }
       dispatch({type : ADD_CHAPTER_REJECTED , payload : err})
     })
   }
@@ -84,6 +93,11 @@ export function deleteChapter(chapter) {
       dispatch({type : DELETE_CHAPTER_FULFILLED, payload : response});
     })
     .catch((err) => {
+      if(err.response && err.response.status == 498){
+        removeCookies();
+        dispatch({type : "LOGOUT"})
+        return
+      }
       dispatch({type : DELETE_CHAPTER_REJECTED, payload : err });
       console.log(err);
     })

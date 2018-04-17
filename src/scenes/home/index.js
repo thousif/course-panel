@@ -60,7 +60,7 @@ class Home extends Component {
         </Breadcrumb>
         <hr className="myhr" />
         <Button type="dashed" onClick={this.add} style={{ width: '60%',margin : '0 20%' }}>
-          <Icon type="plus" /> Add Campaign
+          <Icon type="plus" /> Add Chapter
         </Button>
 
         <div style={{width : '80%',margin:'0 10%'}}>

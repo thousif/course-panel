@@ -8,6 +8,8 @@ export const FETCH_COURSES = "FETCH_COURSES";
 export const FETCH_COURSES_FULFILLED = "FETCH_COURSES_FULFILLED";
 export const FETCH_COURSES_REJECTED = "FETCH_COURSES_REJECTED";
 
+axios.defaults.headers.common['x-access-token'] = cookies.get("course_at");
+
 function removeCookies(){
   cookies.remove("course_at");
   cookies.remove("course_aid");
@@ -25,7 +27,12 @@ export function fetchCourses() {
         dispatch({type: FETCH_COURSES_FULFILLED, payload: response.data})
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response);
+        if(err.response && err.response.status == 498){
+          removeCookies();
+          dispatch({type : "LOGOUT"})
+          return
+        }
         dispatch({type: FETCH_COURSES_REJECTED, payload: err})
       })
   }
